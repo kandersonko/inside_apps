@@ -24,14 +24,14 @@ export default class Item {
       name: result.attributes.name,
       subtitle,
       owner: result.attributes.owner,
-      type: result.attributes.itemType,
+      type: result.attributes.type,
       snippet: description,
       description,
       thumbnailUrl,
       slug: result.attributes.slug,
       landingPage,
       url: result.attributes.url,
-      org: result.attributes.source,
+      org: result.attributes.organization,
       authoritative,
     };
   }

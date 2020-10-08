@@ -35,30 +35,8 @@ export const searchResults$ = combineLatest([search$, groups$]).pipe(
     return ajax(url);
   }),
   map((data) => data.response.data.map((result) => Item.from(result))),
-  // map((data) => {
-  //   return data.response.data.map((result) => {
-  //     let subtitle = '';
-  //     if (result.attributes.tags && result.attributes.tags.find((s) => s.match(/\(?igc-ec\)?|idaho\s+geospatial\s+council\s+-\s+executive\s+committee\s+framework\s+layer/gi))) {
-  //       subtitle = 'Idaho Framework Layer';
-  //     }
-  //     const itemId = result.links.itemPage.split("=")[1];
-  //     const description = result.attributes.searchDescription;
-  //     return ({
-  //       id: result.id,
-  //       name: result.attributes.name,
-  //       subtitle,
-  //       owner: result.attributes.owner,
-  //       type: result.attributes.type,
-  //       snippet: description,
-  //       thumbnailUrl: `https://www.arcgis.com/sharing/content/items/${itemId}/info/${result.attributes.thumbnailUrl}`,
-  //       slug: result.attributes.slug,
-  //       landingPage: result.links.self.replace("api/v3/", ""),
-  //       url: result.links.itemPage,
-  //       org: result.attributes.organization,
-  //     });
-  //   });
-  // }),
   tap(() => searchState$.next(SEARCH_STATES.LOADED)),
+  tap((data) => console.log("search: ", data)),
   startWith([]),
   share()
 );

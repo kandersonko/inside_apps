@@ -13,6 +13,7 @@ export const itemsState$ = state.currentState;
 const tags = `idaho%20geospatial%20council%20-%20executive%20committee%20(igc-ec)%20framework%20layer`
 // const url = `https://opendata.arcgis.com/api/v2/datasets?q=${tags}&fields[items]=tags`;
 
+// ttps://hub.arcgis.com/api/v3/ is an alias of opendata
 const url = `https://opendata.arcgis.com/api/v3/datasets?q=*&filter[tags]=any(${tags})`;
 
 export const items$ = ajax(url).pipe(
